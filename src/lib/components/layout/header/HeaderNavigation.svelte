@@ -36,6 +36,16 @@
 				{ href: '#', description: 'Силка 2-2' },
 				{ href: '#', description: 'Силка 2-3' }
 			]
+		},
+		{
+			buttonId: 'button-3',
+			dropdownId: 'dropdown-menu-3',
+			label: 'Uk',
+			items: [
+				{ href: '#', description: 'Мова 1' },
+				{ href: '#', description: 'Мова 2' },
+				{ href: '#', description: 'Мова 3' }
+			]
 		}
 	];
 </script>
@@ -71,7 +81,14 @@
 	</ul>
 	<hr class="mx-5 h-10 min-w-0.5 bg-slate-300" />
 	<ul class="flex items-center gap-5">
-		<li><button class="triangle flex items-center font-bold text-white">Uk</button></li>
+		<li>
+			<Dropdown
+				buttonId={dropdownData[2].buttonId}
+				dropdownId={dropdownData[2].dropdownId}
+				items={dropdownData[2].items}
+				label={dropdownData[2].label}
+			/>
+		</li>
 		<li>
 			<Link href="#">
 				<svg

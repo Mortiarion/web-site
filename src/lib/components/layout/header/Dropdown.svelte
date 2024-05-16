@@ -39,7 +39,7 @@
 	});
 </script>
 
-<button id={buttonId} on:click={toggleDropdown} class="triangle flex items-center"
+<button id={buttonId} on:click={toggleDropdown} class="triangle flex items-center font-bold text-white"
 	>{label}</button
 >
 
