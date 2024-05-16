@@ -2,6 +2,42 @@
 	import Logo from '$lib/components/base/Logo.svelte';
 	import Button from '$lib/components/base/Button.svelte';
 	import Link from '$lib/components/base/Link.svelte';
+	import Dropdown from '$lib/components/layout/header/Dropdown.svelte';
+
+	interface Item {
+		href: string;
+		description: string;
+	}
+
+	interface DropdownData {
+		buttonId: string;
+		dropdownId: string;
+		label: string;
+		items: Item[];
+	}
+
+	let dropdownData: DropdownData[] = [
+		{
+			buttonId: 'button-1',
+			dropdownId: 'dropdown-menu-1',
+			label: 'Лінкбілдінг',
+			items: [
+				{ href: '#', description: 'Силка 1-1' },
+				{ href: '#', description: 'Силка 1-2' },
+				{ href: '#', description: 'Силка 1-3' }
+			]
+		},
+		{
+			buttonId: 'button-2',
+			dropdownId: 'dropdown-menu-2',
+			label: 'Компанія',
+			items: [
+				{ href: '#', description: 'Силка 2-1' },
+				{ href: '#', description: 'Силка 2-2' },
+				{ href: '#', description: 'Силка 2-3' }
+			]
+		}
+	];
 </script>
 
 <nav class="flex items-center pr-5">
@@ -11,10 +47,20 @@
 			<Link href="#">Головна</Link>
 		</li>
 		<li>
-			<button class="triangle flex items-center">Лінкбилдінг</button>
+			<Dropdown
+				buttonId={dropdownData[0].buttonId}
+				dropdownId={dropdownData[0].dropdownId}
+				items={dropdownData[0].items}
+				label={dropdownData[0].label}
+			/>
 		</li>
 		<li>
-			<button class="triangle flex items-center">Компанія</button>
+			<Dropdown
+				buttonId={dropdownData[1].buttonId}
+				dropdownId={dropdownData[1].dropdownId}
+				items={dropdownData[1].items}
+				label={dropdownData[1].label}
+			/>
 		</li>
 		<li>
 			<Link href="#">Новини</Link>
