@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { writable } from 'svelte/store';
 	import Logo from '$lib/components/base/Logo.svelte';
 	import Button from '$lib/components/base/Button.svelte';
 	import Link from '$lib/components/base/Link.svelte';
@@ -48,6 +49,9 @@
 			]
 		}
 	];
+	import Popup from '$lib/components/base/Popup.svelte';
+
+	let showModal = false;
 </script>
 
 <nav class="flex items-center pr-5">
@@ -109,7 +113,10 @@
 			</Link>
 		</li>
 		<li>
-			<button class="btn-sign flex items-center gap-5 rounded-full bg-white pr-5">
+			<button
+				on:click={() => (showModal = true)}
+				class="btn-sign flex items-center gap-5 rounded-full bg-white pr-5"
+			>
 				<svg
 					width="39"
 					height="40"
@@ -140,6 +147,28 @@
 
 				<span class="pl-8 font-bold">Війти</span>
 			</button>
+			<Popup bind:showModal>
+				<h2 slot="header">
+					modal
+					<small><em>adjective</em> mod·al</small>
+				</h2>
+
+				<ol class="definition-list flex flex-col gap-3">
+					<li>of or relating to modality in logic</li>
+					<li>
+						containing provisions as to the mode of procedure or the manner of taking effect —used
+						of a contract or legacy
+					</li>
+					<li>of or relating to a musical mode</li>
+					<li>of or relating to structure as opposed to substance</li>
+					<li>
+						of, relating to, or constituting a grammatical form or category characteristically
+						indicating predication
+					</li>
+					<li>of or relating to a statistical mode</li>
+				</ol>
+
+			</Popup>
 		</li>
 	</ul>
 </nav>
@@ -154,8 +183,7 @@
 		padding: 7px 20px;
 		overflow: hidden;
 	}
-	.btn-sign:hover {
-	}
+
 	.btn-sign svg {
 		position: absolute;
 		left: 0;
@@ -192,14 +220,5 @@
 	}
 	.btn-sign:hover::before {
 		left: 0%;
-	}
-	.triangle:after {
-		content: '';
-		border-left: 6px solid transparent;
-		border-right: 6px solid transparent;
-		border-top: 6px solid white;
-		margin-left: 10px;
-		/* height: 10px; */
-		/* display: inline-block; */
 	}
 </style>
